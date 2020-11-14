@@ -1,6 +1,7 @@
 Code-Server + Python
 
-This docker file automatically build at https://hub.docker.com/r/dwilicious/code-server-python
+This docker file automatically build at https://hub.docker.com/r/dwilicious/code-server-python.
+
 Dockerfile to generate code-server image with python3 support.
 Using Ubuntu 20.04 as base image.
 
