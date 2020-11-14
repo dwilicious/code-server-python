@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:focal
+FROM ubuntu:latest
 
 # set version label
 ARG BUILD_DATE
@@ -11,9 +11,12 @@ LABEL maintainer="dwilicious"
 ENV HOME="/config"
 
 RUN \
-    echo "**** install node repo ****" && \
+    echo "**** Update Package ****" && \
     apt-get update && \
-    apt-get install -y \
+    apt-get install -y 
+
+RUN \
+    echo "***install node and yarn***" && \
     gnupg && \
     curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
     echo 'deb https://deb.nodesource.com/node_12.x focal main' \
