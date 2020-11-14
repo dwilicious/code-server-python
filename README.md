@@ -2,10 +2,10 @@ Code-Server + Python
 
 This docker file automatically build at https://hub.docker.com/r/dwilicious/code-server-python.
 
-Dockerfile to generate code-server image with python3 support.
+Dockerfile to generate image for code-server with python3 support.
 Using Ubuntu 20.04 as base image.
 
-installed python modules:
+Installed python modules:
 - ipykernel 
 - pylint 
 - pytest 
@@ -15,7 +15,7 @@ installed python modules:
 - requests 
 - flask
 
-installed code-server (vscode) extensions:
+Installed code-server (vscode) extensions:
 - ms-python.python
 - dbaeumer.vscode-eslint
 - esbenp.prettier-vscode
