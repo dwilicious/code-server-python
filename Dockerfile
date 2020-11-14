@@ -8,7 +8,10 @@ LABEL build_version="version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="dwilicious"
 
 # environment settings
-ENV HOME="/config"
+ENV HOME="/code"
+ENV TZ Asia/Jakarta
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN \
     echo "**** Update Package ****" && \
@@ -16,8 +19,12 @@ RUN \
     apt-get install -y 
 
 RUN \
+    echo "***install gnupg and curl***" && \
+    apt install -y gnupg dirmngr curl
+
+RUN \
     echo "***install node and yarn***" && \
-    gnupg && \
+    #    gnupg && \
     curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
     echo 'deb https://deb.nodesource.com/node_12.x focal main' \
     > /etc/apt/sources.list.d/nodesource.list && \
@@ -72,22 +79,18 @@ RUN \
     /var/tmp/*
 
 
-# install common python modules
 RUN \
     echo "**** installing Python Module ****" && \
     pip3 install -U ipykernel pylint pytest numpy pandas matplotlib requests flask
 
-# Install VScode extension
 RUN \
     echo "**** installing vscode extension ****" && \
     code-server --install-extension dbaeumer.vscode-eslint \
     code-server --install-extension esbenp.prettier-vscode \
     code-server --install-extension github.vscode-pull-request-github \
-    #    code-server --install-extension ms-python.python \
+    code-server --install-extension ms-python.python \
     code-server --install-extension ritwickdey.liveserver 
 
-# Take lots of time installing this extension
-RUN code-server --install-extension ms-python.python
 
 # expose port to local machine for code-server and live-server
 EXPOSE 8080 5500
