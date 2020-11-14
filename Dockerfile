@@ -80,11 +80,14 @@ RUN \
     code-server --install-extension dbaeumer.vscode-eslint \
     code-server --install-extension esbenp.prettier-vscode \
     code-server --install-extension github.vscode-pull-request-github \
-    code-server --install-extension ms-python.python \
+    #    code-server --install-extension ms-python.python \
     code-server --install-extension ritwickdey.liveserver 
 
-# expose port to local machine
-EXPOSE 8080 5050
+# Take lots of time installing this extension
+RUN code-server --install-extension ms-python.python
+
+# expose port to local machine for code-server and live-server
+EXPOSE 8080 5500
 
 # run code server
 ENTRYPOINT  code-server --bind-addr 0.0.0.0:8080 --auth none
