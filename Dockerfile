@@ -12,6 +12,7 @@ RUN \
     echo "**** Update repos and install some programs ****" && \
     apt update && \
     apt install -y \
+    curl \
     wget \
     apt-get install -y \
     git \
