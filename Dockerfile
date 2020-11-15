@@ -20,7 +20,7 @@ RUN \
 
 RUN \
     echo "**** install code-server ****" && \
-    CODE_LATEST=$(curl -s https://api.github.com/repos/cdr/code-server/releases/latest | grep "bowser_download_url.*amd64.deb" | cut -d '"' -f 4) && \
+    CODE_LATEST=$(curl -s https://api.github.com/repos/cdr/code-server/releases/latest | grep "browser_download_url.*amd64.deb" | cut -d '"' -f 4) && \
     wget $CODE_LATEST && \
     dpkg -i $CODE_LATEST 
 
