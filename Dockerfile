@@ -26,7 +26,7 @@ RUN \
 
 RUN \
     echo "**** installing Python Module ****" && \
-    pip3 install -U ipykernel pylint pytest numpy pandas matplotlib requests flask
+    pip3 --no-cache install -U ipykernel pylint pytest numpy pandas matplotlib requests flask
 
 RUN \
     echo "**** installing vscode extension ****" && \
@@ -41,6 +41,7 @@ RUN \
     apt purge --auto-remove -y && \
     apt autoclean -y && \
     rm -rf \
+    ${HOME}/.local/share/code-server/CachedExtensionVSIXs/* \
     /code/*.deb \
     /tmp/* \
     /var/lib/apt/lists/* \
