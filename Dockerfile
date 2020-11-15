@@ -14,7 +14,6 @@ RUN \
     apt install -y \
     curl \
     wget \
-    apt-get install -y \
     git \
     nano \
     python3-pip 
