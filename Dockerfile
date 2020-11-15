@@ -25,16 +25,6 @@ RUN \
     dpkg -i *.deb 
 
 RUN \
-    echo "**** clean up ****" && \
-    apt purge --auto-remove -y && \
-    apt autoclean -y && \
-    rm -rf \
-    /code/*.deb \
-    /tmp/* \
-    /var/lib/apt/lists/* \
-    /var/tmp/*
-
-RUN \
     echo "**** installing Python Module ****" && \
     pip3 install -U ipykernel pylint pytest numpy pandas matplotlib requests flask
 
@@ -45,6 +35,16 @@ RUN \
     code-server --install-extension github.vscode-pull-request-github \
     code-server --install-extension ms-python.python \
     code-server --install-extension ritwickdey.liveserver 
+
+RUN \
+    echo "**** clean up ****" && \
+    apt purge --auto-remove -y && \
+    apt autoclean -y && \
+    rm -rf \
+    /code/*.deb \
+    /tmp/* \
+    /var/lib/apt/lists/* \
+    /var/tmp/*
 
 # expose port to local machine for code-server and live-server
 EXPOSE 8080 5500
