@@ -24,7 +24,8 @@ RUN \
     dpkg -i *.deb 
 
 RUN \
-    echo "**** installing vscode extension ****" && \
+    echo "**** installing extension ****" && \
+    pip3 --no-cache install -U pylint \
     code-server --install-extension ms-python.python
 
 RUN \
