@@ -26,8 +26,8 @@ RUN \
 
 RUN \
     echo "**** clean up ****" && \
-    apt purge --auto-remove -y \
-    apt clean && \
+    apt purge --auto-remove -y && \
+    apt autoclean -y && \
     rm -rf \
     /tmp/* \
     /var/lib/apt/lists/* \
