@@ -29,6 +29,7 @@ RUN \
     apt purge --auto-remove -y && \
     apt autoclean -y && \
     rm -rf \
+    /code/*.deb \
     /tmp/* \
     /var/lib/apt/lists/* \
     /var/tmp/*
