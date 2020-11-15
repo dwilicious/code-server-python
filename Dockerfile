@@ -24,11 +24,16 @@ RUN \
     dpkg -i *.deb 
 
 RUN \
+    echo "**** installing vscode extension ****" && \
+    code-server --install-extension ms-python.python
+
+RUN \
     echo "**** clean up ****" && \
     apt purge --auto-remove -y && \
     apt autoclean -y && \
     rm -rf \
     /code/*.deb \
+    ${HOME}/.local/share/code-server/CachedExtensionVSIXs/* \
     /tmp/* \
     /var/lib/apt/lists/* \
     /var/tmp/*
