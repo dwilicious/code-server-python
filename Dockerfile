@@ -21,7 +21,7 @@ RUN \
     wget $CODE_LATEST && \
     dpkg -i *.deb && \
     echo "**** installing extension ****" && \
-    pip3 --no-cache install -U pylint \
+    pip3 --no-cache install -U pylint && \
     code-server --install-extension ms-python.python && \
     echo "**** clean up ****" && \
     apt purge --auto-remove -y && \
